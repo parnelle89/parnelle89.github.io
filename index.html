@@ -1,0 +1,45 @@
+<html>
+    
+    <body>
+        <div id="TimContainer" style="text-align: center; margin-top: 250px;">
+            <img id="TimAllen" src="TimAllen.png" onmousedown="toolTime()"  onclick="timClick()" />
+            <img id="HailTim" src="HailTim.png" onmouseup="toolTime()" style="display:none; margin-top: 10px;" />
+        </div>
+
+        <div style="text-align: center;">
+            <label for="DoubleTim">Double Tim Toggle</label>
+            <input type="checkbox" id="DoubleTim">
+        </div>
+        
+        
+        <audio id="TimGrunt" src="TimGrunt.wav"></audio>
+    </body>
+
+    <script>
+        function toolTime() {
+            if (TimAllen.style.display != "none") {
+                TimAllen.style.display = "none";
+                HailTim.style.display = "inline-block";
+
+                var grunt = new Audio();
+                var gruntSrc = document.createElement("source");
+                gruntSrc.type = "audio/wav";
+                gruntSrc.src = "TimGrunt.wav";
+                grunt.appendChild(gruntSrc);
+                grunt.play();
+            } else {
+                HailTim.style.display = "none";
+                TimAllen.style.display = "inline-block";
+                if (DoubleTim.checked) {
+                    var grunt = new Audio();
+                    var gruntSrc = document.createElement("source");
+                    gruntSrc.type = "audio/wav";
+                    gruntSrc.src = "TimGrunt.wav";
+                    grunt.appendChild(gruntSrc);
+                    grunt.play();
+                }   
+            }
+        }
+    </script>
+
+</html>
