@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
     
+    <head>
+        <title>Bow before your God</title>    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+    </head>
+    
     <body>
         <div id="TimContainer" style="text-align: center; margin-top: 250px;">
-            <img id="TimAllen" src="TimAllen.png" onmousedown="toolTime()"  onclick="timClick()" />
-            <img id="HailTim" src="HailTim.png" onmouseup="toolTime()" style="display:none; margin-top: 10px;" />
+            <img id="TimAllen" src="TimAllen.png" />
+            <img id="HailTim" src="HailTim.png" style="display:none; margin-top: 10px;" />
         </div>
 
-        <div style="text-align: center;">
-            <label for="DoubleTim">Double Tim Toggle</label>
-            <input type="checkbox" id="DoubleTim">
+        <div style="text-align: center; margin-top: 50px;">
+            <label for="DoubleTim" style="font-size:30px;">Double Tim Toggle</label>
+            <input type="checkbox" id="DoubleTim" style="transform: scale(2)">
         </div>
         
         
@@ -17,6 +22,14 @@
     </body>
 
     <script>
+
+        TimAllen.addEventListener("mousedown", toolTime, false);
+        TimAllen.addEventListener("touchstart", toolTime, false);
+
+        HailTim.addEventListener("mouseup", toolTime, false);
+        HailTim.addEventListener("touchend", toolTime, false);
+
+
         function toolTime() {
             if (TimAllen.style.display != "none") {
                 TimAllen.style.display = "none";
