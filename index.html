@@ -5,16 +5,32 @@
         <title>Bow before your God</title>    
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
     </head>
+
+    <style>
+        @media (max-width: 480px) {
+            img {
+                margin-left: -100px;
+            }
+        }
+    </style>
     
-    <body>
-        <div id="TimContainer" style="text-align: center; margin-top: 250px;">
+    <body style="text-align: center;">
+        <div id="TimContainer">
             <img id="TimAllen" src="TimAllen.png" />
             <img id="HailTim" src="HailTim.png" style="display:none; margin-top: 10px;" />
         </div>
 
-        <div style="text-align: center; margin-top: 50px;">
-            <label for="DoubleTim" style="font-size:30px;">Double Tim Toggle</label>
+        <div style="margin-top: 50px;">
+            <label for="DoubleTim" style="font-size:30px;">Double Tim Toggle</label><br />
             <input type="checkbox" id="DoubleTim" style="transform: scale(2)">
+        </div>
+
+        <div style="margin-top: 50px;">
+            <label for="GruntSpeed" style="font-size: 30px;">Grunt Speed Grundler</label>
+            <br />
+            <small>0.5 - 4</small>
+            <br />
+            <input id="GruntSpeed" value="1" />
         </div>
         
         
@@ -23,36 +39,40 @@
 
     <script>
 
+        var TimAllen = document.getElementById('TimAllen');
+        var HailTim = document.getElementById('HailTim');
+        var TimGrunt = document.getElementById('TimGrunt');
+        var GruntSpeed = document.getElementById('GruntSpeed');
+
         TimAllen.addEventListener("mousedown", toolTime, false);
         TimAllen.addEventListener("touchstart", toolTime, false);
+        TimAllen.addEventListener("touchend", toolTime, false);
 
         HailTim.addEventListener("mouseup", toolTime, false);
+        HailTim.addEventListener("touchstart", toolTime, false);
         HailTim.addEventListener("touchend", toolTime, false);
 
-
         function toolTime() {
+
             if (TimAllen.style.display != "none") {
+
                 TimAllen.style.display = "none";
                 HailTim.style.display = "inline-block";
-
-                var grunt = new Audio();
-                var gruntSrc = document.createElement("source");
-                gruntSrc.type = "audio/wav";
-                gruntSrc.src = "TimGrunt.wav";
-                grunt.appendChild(gruntSrc);
-                grunt.play();
+                aeugh(TimGrunt.cloneNode());
             } else {
+
                 HailTim.style.display = "none";
                 TimAllen.style.display = "inline-block";
+
                 if (DoubleTim.checked) {
-                    var grunt = new Audio();
-                    var gruntSrc = document.createElement("source");
-                    gruntSrc.type = "audio/wav";
-                    gruntSrc.src = "TimGrunt.wav";
-                    grunt.appendChild(gruntSrc);
-                    grunt.play();
-                }   
+                    aeugh(TimGrunt.cloneNode());
+                }
             }
+        }
+
+        function aeugh(newGrunt) {
+            newGrunt.playbackRate = GruntSpeed.value;
+            newGrunt.play();
         }
     </script>
 
