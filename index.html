@@ -39,6 +39,11 @@
 
     <script>
 
+        var TimAllen = document.getElementById('TimAllen');
+        var HailTim = document.getElementById('HailTim');
+        var TimGrunt = document.getElementById('TimGrunt');
+        var GruntSpeed = document.getElementById('GruntSpeed');
+
         TimAllen.addEventListener("mousedown", toolTime, false);
         TimAllen.addEventListener("touchstart", toolTime, false);
 
@@ -51,25 +56,21 @@
 
                 TimAllen.style.display = "none";
                 HailTim.style.display = "inline-block";
-                var newGrunt = TimGrunt.cloneNode();
-                newGrunt.playbackRate = GruntSpeed.value;
-                newGrunt.play();
-
+                aeugh(TimGrunt.cloneNode());
             } else {
 
                 HailTim.style.display = "none";
                 TimAllen.style.display = "inline-block";
 
                 if (DoubleTim.checked) {
-                    var newGrunt2 = TimGrunt.cloneNode();
-                    newGrunt2.playbackRate = GruntSpeed.value;
-                    newGrunt2.play();
+                    aeugh(TimGrunt.cloneNode());
                 }
             }
         }
 
-        function aeugh() {
-            
+        function aeugh(newGrunt) {
+            newGrunt.playbackRate = GruntSpeed.value;
+            newGrunt.play();
         }
     </script>
 
