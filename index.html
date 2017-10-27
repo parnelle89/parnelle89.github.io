@@ -51,9 +51,7 @@
 
                 TimAllen.style.display = "none";
                 HailTim.style.display = "inline-block";
-                var newGrunt = TimGrunt.cloneNode();
-                newGrunt.playbackRate = GruntSpeed.value;
-                newGrunt.play();
+                aeugh();
 
             } else {
 
@@ -61,15 +59,15 @@
                 TimAllen.style.display = "inline-block";
 
                 if (DoubleTim.checked) {
-                    var newGrunt = TimGrunt.cloneNode();
-                newGrunt.playbackRate = GruntSpeed.value;
-                newGrunt.play();
+                    aeugh();
                 }
             }
         }
 
         function aeugh() {
-            
+            var newGrunt = TimGrunt.cloneNode();
+            newGrunt.playbackRate = GruntSpeed.value;
+            newGrunt.play();
         }
     </script>
 
