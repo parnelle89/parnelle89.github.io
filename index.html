@@ -39,11 +39,6 @@
 
     <script>
 
-        var TimAllen = document.getElementById('TimAllen');
-        var HailTim = document.getElementById('HailTim');
-        var TimGrunt = document.getElementById('TimGrunt');
-        var GruntSpeed = document.getElementById('GruntSpeed');
-
         TimAllen.addEventListener("mousedown", toolTime, false);
         TimAllen.addEventListener("touchstart", toolTime, false);
 
@@ -56,21 +51,25 @@
 
                 TimAllen.style.display = "none";
                 HailTim.style.display = "inline-block";
-                aeugh(TimGrunt.cloneNode());
+                var newGrunt = TimGrunt.cloneNode();
+                newGrunt.playbackRate = GruntSpeed.value;
+                newGrunt.play();
+
             } else {
 
                 HailTim.style.display = "none";
                 TimAllen.style.display = "inline-block";
 
                 if (DoubleTim.checked) {
-                    aeugh(TimGrunt.cloneNode());
+                    var newGrunt2 = TimGrunt.cloneNode();
+                    newGrunt2.playbackRate = GruntSpeed.value;
+                    newGrunt2.play();
                 }
             }
         }
 
-        function aeugh(newGrunt) {
-            newGrunt.playbackRate = GruntSpeed.value;
-            newGrunt.play();
+        function aeugh() {
+            
         }
     </script>
 
