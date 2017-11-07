@@ -32,17 +32,17 @@
             <br />
             <input id="GruntSpeed" value="1" />
         </div>
-        
+
+        <div style="margin-top: 50px;">
+            <label for="ChkReverseGrunt" style="font-size: 30px;">Grunt Reversifier</label>
+            <input type="checkbox" id="ChkReverseGrunt" style="transform: scale(2)">
+        </div>
         
         <audio id="TimGrunt" src="TimGrunt.wav"></audio>
+        <audio id="ReverseGrunt" src="ReverseGrunt.wav"></audio>
     </body>
 
     <script>
-
-        var TimAllen = document.getElementById('TimAllen');
-        var HailTim = document.getElementById('HailTim');
-        var TimGrunt = document.getElementById('TimGrunt');
-        var GruntSpeed = document.getElementById('GruntSpeed');
 
         TimAllen.addEventListener("mousedown", toolTime, false);
         TimAllen.addEventListener("touchstart", toolTime, false);
@@ -53,20 +53,26 @@
         HailTim.addEventListener("touchend", toolTime, false);
 
         function toolTime() {
-
             if (TimAllen.style.display != "none") {
-
                 TimAllen.style.display = "none";
                 HailTim.style.display = "inline-block";
-                aeugh(TimGrunt.cloneNode());
+                grunt();
             } else {
 
                 HailTim.style.display = "none";
                 TimAllen.style.display = "inline-block";
 
                 if (DoubleTim.checked) {
-                    aeugh(TimGrunt.cloneNode());
+                    grunt();
                 }
+            }
+        }
+
+        function grunt() {
+            if (ChkReverseGrunt.checked) {
+                aeugh(ReverseGrunt.cloneNode());
+            } else {
+                aeugh(TimGrunt.cloneNode());
             }
         }
 
