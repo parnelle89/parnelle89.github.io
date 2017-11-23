@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
-    
+
     <head>
-        <title>Bow before your God</title>    
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+	    <!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110145916-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-110145916-1');
+		</script>
+
+        <title>Bow before your God</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     </head>
 
     <style>
@@ -13,7 +23,7 @@
             }
         }
     </style>
-    
+
     <body style="text-align: center;">
         <div id="TimContainer">
             <img id="TimAllen" src="TimAllen.png" />
@@ -37,49 +47,11 @@
             <label for="ChkReverseGrunt" style="font-size: 30px;">Grunt Reversifier</label>
             <input type="checkbox" id="ChkReverseGrunt" style="transform: scale(2)">
         </div>
-        
+
         <audio id="TimGrunt" src="TimGrunt.wav"></audio>
         <audio id="ReverseGrunt" src="ReverseGrunt.wav"></audio>
     </body>
 
-    <script>
-
-        TimAllen.addEventListener("mousedown", toolTime, false);
-        TimAllen.addEventListener("touchstart", toolTime, false);
-        TimAllen.addEventListener("touchend", toolTime, false);
-
-        HailTim.addEventListener("mouseup", toolTime, false);
-        HailTim.addEventListener("touchstart", toolTime, false);
-        HailTim.addEventListener("touchend", toolTime, false);
-
-        function toolTime() {
-            if (TimAllen.style.display != "none") {
-                TimAllen.style.display = "none";
-                HailTim.style.display = "inline-block";
-                grunt();
-            } else {
-
-                HailTim.style.display = "none";
-                TimAllen.style.display = "inline-block";
-
-                if (DoubleTim.checked) {
-                    grunt();
-                }
-            }
-        }
-
-        function grunt() {
-            if (ChkReverseGrunt.checked) {
-                aeugh(ReverseGrunt.cloneNode());
-            } else {
-                aeugh(TimGrunt.cloneNode());
-            }
-        }
-
-        function aeugh(newGrunt) {
-            newGrunt.playbackRate = GruntSpeed.value;
-            newGrunt.play();
-        }
-    </script>
+    <script src="tooltime.js"></script>
 
 </html>
